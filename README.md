@@ -10,6 +10,18 @@ add package
 yarn add @saifuwallet/saifu-ui
 ```
 
+update `tailwind.config.js` to include saifu-ui (if you are using tailwind already)
+
+```
+module.exports = {
+  content: [
+    ...,
+    './node_modules/@saifuwallet/saifu-ui/dist/**/*.js'
+  ],
+  // ...
+}
+```
+
 import components
 
 ```ts

@@ -1,6 +1,24 @@
 {
   "name": "@saifuwallet/saifu-ui",
+  "description": "React component library for saifu wallet.",
   "version": "0.0.1",
+  "author": {
+    "name": "Tengis Bat-Ulzii",
+    "email": "tengis@saifuwallet.com",
+    "url": "https://saifuwallet.com"
+  },
+  "keywords": [
+    "react",
+    "saifu",
+    "saifuwallet",
+    "saifu-ui",
+    "components",
+    "tailwindcss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:saifuwallet/saifu-ui.git"
+  },
   "license": "MIT",
   "files": [
     "dist"
@@ -62,5 +80,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
