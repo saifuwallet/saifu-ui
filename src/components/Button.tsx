@@ -23,7 +23,7 @@ type IconProps =
   | { endIcon: ReactElement; startIcon?: never }
   | { endIcon?: undefined; startIcon?: undefined };
 
-type ButtonProps<T extends ElementType> = {
+export type ButtonProps<T extends ElementType> = {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   isLoading?: boolean;
@@ -63,4 +63,4 @@ function Button<T extends ElementType = 'button'>({
 
 Button.displayName = 'Button';
 
-export default React.memo(Button);
+export default Button;
