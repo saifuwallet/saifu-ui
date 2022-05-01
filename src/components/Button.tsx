@@ -6,9 +6,9 @@ import colors from '../constants/colors';
 import Spinner from './Spinner';
 
 const variants = {
-  primary: `${colors.background.highlight} text-white`,
+  primary: `shadow-md ${colors.background.highlight} text-white`,
   inverse: 'text-gray-500 hover:text-orange-500',
-  danger: 'bg-red-600 text-white hover:bg-red-50 hover:bg-red-700',
+  danger: 'shadow-md bg-red-600 text-white hover:bg-red-50 hover:bg-red-700',
 };
 
 const sizes = {
