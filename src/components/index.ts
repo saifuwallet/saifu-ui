@@ -9,3 +9,4 @@ export { default as Spinner } from './Spinner';
 export { default as TextArea } from './TextArea';
 export { default as ToggleSwitch } from './ToggleSwitch';
 export { default as TokenLogo } from './TokenLogo';
+export { default as Text } from './Text';
