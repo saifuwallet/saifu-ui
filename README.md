@@ -25,30 +25,49 @@ module.exports = {
 import components
 
 ```ts
-import { Button, Card, TokenLogo } from '@saifuwallet/saifu-ui';
-
 function App() {
+  const [tokenMap, setTokenMap] = useState<Map<string, TokenInfo>>(new Map());
+  const queryClient = new QueryClient();
+
+  useEffect(() => {
+    new TokenListProvider().resolve().then((tokens) => {
+      const tokenList = tokens.filterByClusterSlug('mainnet-beta').getList();
+
+      setTokenMap(
+        tokenList.reduce((map, item) => {
+          map.set(item.address, item);
+          return map;
+        }, new Map())
+      );
+    });
+  }, [setTokenMap]);
+
+  const tokenAcc: TokenAccount = {
+    mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    amount: '10000',
+    decimals: 1,
+  };
   return (
-    <div className="pt-48 flex justify-center">
-      <Card className="space-y-2 max-w-md">
-        <div className="flex gap-4">
-          <TokenLogo
-            className=""
-            url="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png"
-          />
-          <div>
-            <p className="text-lg font-bold">Saifu UI</p>
-            <p className="text-md text-gray-500 font-semibold">Components shared accross the UI</p>
-          </div>
+    <SaifuUIProvider tokenMap={tokenMap} queryClient={queryClient}>
+      <div className="pt-48 flex justify-center">
+        <div className="space-y-2">
+          <TokenAccountCard tokenAccount={tokenAcc} />
+          <TokenAccountCard tokenAccount={tokenAcc} />
+          <TokenAccountCard tokenAccount={tokenAcc} />
         </div>
-        <Button text="hello world" className="w-full" />
-      </Card>
-    </div>
+      </div>
+    </SaifuUIProvider>
   );
 }
 ```
 
 Enjoy!
+
+## Storybook
+
+```
+yarn storybook
+```
 
 ## Contributing
 

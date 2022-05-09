@@ -1,7 +1,7 @@
 {
   "name": "@saifuwallet/saifu-ui",
   "description": "React component library for saifu wallet.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Tengis Bat-Ulzii",
     "email": "tengis@saifuwallet.com",
@@ -44,13 +44,16 @@
   "dependencies": {
     "@headlessui/react": "^1.6.0",
     "@heroicons/react": "^1.0.6",
+    "@solana/spl-token-registry": "^0.2.3841",
     "@tailwindcss/forms": "^0.5.0",
     "autoprefixer": "^10.4.5",
     "clsx": "^1.1.1",
+    "numeral": "^2.0.6",
     "postcss": "^8.4.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-query": "^3.38.1",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.0.24"
   },
@@ -62,6 +65,7 @@
     "@storybook/builder-vite": "^0.1.32",
     "@storybook/react": "^6.5.0-beta.1",
     "@storybook/test-runner": "0.0.8",
+    "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.21.0",

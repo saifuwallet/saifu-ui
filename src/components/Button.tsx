@@ -4,18 +4,26 @@ import React, { ComponentPropsWithoutRef, ElementType, ReactElement } from 'reac
 import colors from '../constants/colors';
 
 import Spinner from './Spinner';
+import Text, { weights } from './Text';
 
 const variants = {
-  primary: `shadow-md ${colors.background.highlight} text-white`,
-  inverse: 'text-gray-500 hover:text-orange-500',
-  danger: 'shadow-md bg-red-600 text-white hover:bg-red-50 hover:bg-red-700',
+  primary: `shadow-md ${colors.background.highlight}`,
+  inverse: 'hover:text-orange-500',
+  danger: `shadow-md ${colors.background.danger}`,
 };
 
 const sizes = {
-  xs: 'py-1 px-2 text-xs',
-  sm: 'py-2 px-4 text-sm',
-  md: 'py-2 px-4 text-md font-medium',
-  lg: 'py-2 px-4 text-lg font-semibold',
+  xs: 'py-1 px-2',
+  sm: 'py-2 px-4',
+  md: 'py-2 px-4',
+  lg: 'py-2 px-4',
+};
+
+const textWeights: Record<keyof typeof sizes, keyof typeof weights> = {
+  xs: 'normal',
+  sm: 'normal',
+  md: 'medium',
+  lg: 'semibold',
 };
 
 type IconProps =
@@ -53,10 +61,20 @@ function Button<T extends ElementType = 'button'>({
       )}
       {...props}
     >
-      {isLoading && <Spinner variant="white" className="text-lg mr-2" />}
-      {!isLoading && startIcon}
-      <p>{props.text}</p>
-      {!isLoading && endIcon}
+      {isLoading ? (
+        <Spinner variant={variant === 'inverse' ? 'gray' : 'white'} className="text-lg mr-2" />
+      ) : (
+        <>
+          {startIcon}
+          <Text
+            weight={textWeights[size]}
+            size={size}
+            variant={variant === 'inverse' ? 'secondary' : 'inverse'}
+            text={props.text}
+          />
+          {endIcon}
+        </>
+      )}
     </Component>
   );
 }
