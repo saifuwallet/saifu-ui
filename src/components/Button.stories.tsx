@@ -42,3 +42,11 @@ Small.args = {
   label: 'Button',
   text: 'Small',
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  label: 'Button',
+  text: 'Loading',
+  variant: 'primary',
+  isLoading: true,
+};
