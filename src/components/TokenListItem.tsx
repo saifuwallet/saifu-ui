@@ -39,9 +39,6 @@ const TokenListItem = ({ onClick, className, mint, style, tokenAccount }: TokenL
         <div>
           <Text weight="semibold" text={tokenInfo?.symbol || short(mint)} />
         </div>
-        <div>
-          <Text variant="secondary" text={tokenInfo?.name} />
-        </div>
       </div>
       <div className="flex-none text-right">
         <div>
