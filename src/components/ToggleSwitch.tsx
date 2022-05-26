@@ -1,7 +1,7 @@
 import { Switch } from '@headlessui/react';
 import clsx from 'clsx';
 
-import colors from '../constants/colors';
+import colors from '@/constants/colors';
 
 interface Props {
   enabled: boolean;

@@ -29,7 +29,7 @@ function TokenLogo({ url, size = 'md', shape = 'round', className }: TokenLogoPr
       alt="logo"
     />
   ) : (
-    <QuestionMarkCircleIcon className={clsx('text-gray-400', sizes[size])} />
+    <QuestionMarkCircleIcon className={clsx('text-gray-400', sizes[size], className)} />
   );
 }
 

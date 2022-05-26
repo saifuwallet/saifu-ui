@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import colors from '../constants/colors';
+import colors from '@/constants/colors';
 
-import Spinner from './Spinner';
+import Spinner from '@/components/Elements/Spinner';
 
 const variants = {
   primary: 'bg-white dark:bg-gray-800',

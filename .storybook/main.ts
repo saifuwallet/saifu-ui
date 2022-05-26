@@ -1,3 +1,4 @@
+import * as path from 'path';
 import type { StorybookViteConfig } from '@storybook/builder-vite';
 
 const config: StorybookViteConfig = {
@@ -14,6 +15,11 @@ const config: StorybookViteConfig = {
   // other storybook options...,
   async viteFinal(config, options) {
     // modify and return config
+    config.resolve = {
+      alias: {
+        '@': path.resolve('src'),
+      },
+    };
     return config;
   },
 };

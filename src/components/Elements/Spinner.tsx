@@ -14,7 +14,7 @@ const variants = {
   gray: 'text-gray-400',
 };
 
-function Spinner({
+const Spinner = ({
   className,
   size = 'md',
   variant = 'gray',
@@ -22,10 +22,10 @@ function Spinner({
   className?: string;
   size?: keyof typeof sizes;
   variant?: keyof typeof variants;
-}) {
+}) => {
   return (
     <CgSpinnerAlt className={clsx('animate-spin', className, sizes[size], variants[variant])} />
   );
-}
+};
 
-export default React.memo(Spinner);
+export default Spinner;

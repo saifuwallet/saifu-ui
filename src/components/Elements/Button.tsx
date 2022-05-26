@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { ComponentPropsWithoutRef, ElementType, ReactElement } from 'react';
 
-import colors from '../constants/colors';
+import colors from '@/constants/colors';
 
-import Spinner from './Spinner';
-import Text, { weights } from './Text';
+import Spinner from '@/components/Elements/Spinner';
+import Text, { weights } from '@/components/Text';
 
 const variants = {
   primary: `shadow-md ${colors.background.highlight}`,

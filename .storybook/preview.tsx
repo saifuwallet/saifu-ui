@@ -3,6 +3,7 @@ import SaifuUIProvider from '../src/contexts/SaifuUIProvider';
 import { TokenListProvider, TokenInfo } from '@solana/spl-token-registry';
 import { QueryClient } from 'react-query';
 import { useEffect, useState } from 'react';
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -11,6 +12,22 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  viewport: {
+    viewports: {
+      chromeExtension: {
+        name: 'Chrome Extension',
+        styles: {
+          width: '350px',
+          height: '600px',
+        },
+      },
+      ...MINIMAL_VIEWPORTS,
+    },
+    defaultViewport: 'chromeExtension',
+  },
+  backgrounds: {
+    default: 'light',
   },
 };
 

@@ -23,6 +23,8 @@ export const weights = {
   semibold: 'font-semibold',
   normal: 'font-normal',
   medium: 'font-medium',
+  light: 'font-light',
+  thin: 'font-thin',
 };
 
 const Text = ({

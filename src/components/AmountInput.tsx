@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { displayUSD } from '../lib/number';
 import Input from './Input';
-import Button from './Button';
+import Button from '@/components/Elements/Button';
 import Text from './Text';
 import TokenLogo from './TokenLogo';
 import clsx from 'clsx';

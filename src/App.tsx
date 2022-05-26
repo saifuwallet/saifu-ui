@@ -2,7 +2,7 @@ import SaifuUIProvider from './contexts/SaifuUIProvider';
 import { TokenListProvider, TokenInfo } from '@solana/spl-token-registry';
 import { useState, useEffect } from 'react';
 import { QueryClient } from 'react-query';
-import TokenAccountCard from './components/TokenAccountCard';
+import TokenListItem from './components/TokenListItem';
 import './index.css';
 import TokenAccount from './types/TokenAccount';
 
@@ -32,9 +32,9 @@ function App() {
     <SaifuUIProvider tokenMap={tokenMap} queryClient={queryClient}>
       <div className="pt-48 flex justify-center">
         <div className="space-y-2">
-          <TokenAccountCard tokenAccount={tokenAcc} />
-          <TokenAccountCard tokenAccount={tokenAcc} />
-          <TokenAccountCard tokenAccount={tokenAcc} />
+          <TokenListItem mint={tokenAcc.mint} tokenAccount={tokenAcc} />
+          <TokenListItem mint={tokenAcc.mint} tokenAccount={tokenAcc} />
+          <TokenListItem mint={tokenAcc.mint} tokenAccount={tokenAcc} />
         </div>
       </div>
     </SaifuUIProvider>

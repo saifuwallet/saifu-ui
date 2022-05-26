@@ -22,7 +22,12 @@
     "outDir": "dist",
     "declaration": true,
     "declarationMap": true,
-    "baseUrl": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    }
   },
   "include": [
     "src"
