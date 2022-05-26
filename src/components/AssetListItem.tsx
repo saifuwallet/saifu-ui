@@ -11,7 +11,8 @@ import Text from './Text';
 import clsx from 'clsx';
 
 export type AssetListItemProps = {
-  tokenAccount: TokenAccount;
+  mint: string;
+  tokenAccount?: TokenAccount;
   className?: string;
   onClick?: () => void;
   isLoading?: boolean;
@@ -29,14 +30,15 @@ const AssetListItem = ({
   metadata,
   onClick,
   isLoading,
+  mint,
 }: AssetListItemProps) => {
   const tokenMap = useTokenMap();
-  const info = tokenMap.get(tokenAccount.mint);
+  const info = tokenMap.get(mint);
   const price = usePrice(info);
   // token metadata from metadata program (if available)
   // const metadata = useTokenMetadata(tokenAccount.mint);
   const tokenBalance = useMemo(
-    () => lamportsToSol(Number(tokenAccount.amount), tokenAccount.decimals),
+    () => tokenAccount && lamportsToSol(Number(tokenAccount.amount), tokenAccount.decimals),
     [tokenAccount]
   );
 
@@ -59,7 +61,7 @@ const AssetListItem = ({
         <Text
           weight="semibold"
           isLoading={isLoading}
-          text={info?.name || metadata?.name || short(tokenAccount.mint)}
+          text={info?.name || metadata?.name || short(mint)}
         />
       </div>
       <div className="hidden lg:block col-span-2 text-right">
@@ -72,7 +74,7 @@ const AssetListItem = ({
       <div className="col-span-2 text-right">
         <Text
           isLoading={price.isLoading}
-          text={displayUSD(price.data && tokenBalance * price.data)}
+          text={displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
           weight="semibold"
           placeholderCharLength={10}
         />
@@ -81,7 +83,7 @@ const AssetListItem = ({
         <Text
           placeholderCharLength={10}
           isLoading={isLoading}
-          text={`${displayAmount(Number(tokenAccount.amount), tokenAccount.decimals)} ${
+          text={`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
             info?.symbol ? info?.symbol : ''
           }`}
         />
