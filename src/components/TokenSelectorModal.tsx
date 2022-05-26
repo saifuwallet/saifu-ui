@@ -29,42 +29,31 @@ export default function TokenSelectorModal({
   );
   const tokenMap = useTokenMap();
   const prices = usePrices(tokenAccounts?.map((acc) => acc.mint) || []);
-  const balances = useMemo(() => {
-    if (!prices.data || !tokenAccounts) {
-      return [];
-    }
-    return tokenAccounts.map((acc) => ({
-      balance: (prices.data[acc.mint] * Number(acc.amount)) / Math.pow(10, acc.decimals),
-      mint: acc.mint,
-      amount: Number(acc.amount) / Math.pow(10, acc.decimals),
-    }));
-  }, [tokenAccounts, prices.data]);
-  const tokens = useMemo(() => {
-    const tokenAccWithNoInfo = tokenAccounts
-      ?.map(
-        (a): TokenInfo => ({
-          chainId: 101,
-          address: a.mint,
-          name: '',
-          decimals: a.decimals,
-          symbol: '',
-        })
-      )
-      .filter((t) => !tokenMap.has(t.address));
-    const merged = tokenAccWithNoInfo
-      ? [...Array.from(tokenMap.values()), ...tokenAccWithNoInfo]
-      : Array.from(tokenMap.values());
-    return sort(merged).desc([
-      (t) => {
-        return balances.find((b) => b.mint.toLowerCase() === t.address.toLowerCase())?.balance;
-      },
-      (t) => {
-        return balances.find((b) => b.mint.toLowerCase() === t.address.toLowerCase())?.amount;
-      },
-    ]);
-  }, [tokenMap, balances, tokenAccounts]);
 
-  const tokenList = useMemo(() => tokens && tokens.filter(filterByQuery(query)), [query, tokens]);
+  const tokens = useMemo(() => {
+    const res = new Set<string>();
+    if (!prices.data || !tokenAccounts) {
+      Array.from(tokenMap.values()).forEach((v) => res.add(v.address));
+      return Array.from(res);
+    }
+
+    sort(tokenAccounts)
+      .desc([
+        (acc) => (prices.data[acc.mint] * Number(acc.amount)) / Math.pow(10, acc.decimals),
+        (acc) => Number(acc.amount) / Math.pow(10, acc.decimals),
+      ])
+      .forEach((acc) => res.add(acc.mint));
+
+    Array.from(tokenMap.values()).forEach((v) => res.add(v.address));
+
+    return Array.from(res);
+  }, [tokenMap, tokenAccounts, prices.data]);
+
+  const filteredTokens = useMemo(
+    () => tokens && tokens.filter(filterByQuery(query, tokenMap)),
+    [query, tokens]
+  );
+  // balance => amount
 
   return (
     <Modal title="Select Token" isOpen={isOpen} onClose={onClose}>
@@ -76,10 +65,10 @@ export default function TokenSelectorModal({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        {tokenList && (
+        {filteredTokens && (
           <List
             className="scrollbar-hide"
-            itemCount={tokenList?.length || 0}
+            itemCount={filteredTokens.length}
             height={208}
             itemSize={58}
             width="100%"
@@ -88,9 +77,9 @@ export default function TokenSelectorModal({
               <TokenListItem
                 style={style}
                 key={index}
-                mint={tokenList[index].address}
-                tokenAccount={getTokenAcc(tokenList[index].address)}
-                onClick={() => onSelect(tokenList[index].address)}
+                mint={filteredTokens[index]}
+                tokenAccount={getTokenAcc(filteredTokens[index])}
+                onClick={() => onSelect(filteredTokens[index])}
               />
             )}
           </List>
@@ -100,19 +89,20 @@ export default function TokenSelectorModal({
   );
 }
 
-export const filterByQuery = (q: string) => {
-  return (token: TokenInfo) => {
+export const filterByQuery = (q: string, tokenMap: Map<string, TokenInfo>) => {
+  return (mint: string) => {
+    const token = tokenMap.get(mint);
     if (q === '') {
-      return token;
+      return mint;
     }
-    if (token.address.toLowerCase().includes(q.toLowerCase())) {
-      return token;
+    if (token?.address.toLowerCase().includes(q.toLowerCase())) {
+      return mint;
     }
-    if (token.symbol && token.symbol.toLowerCase().includes(q.toLowerCase())) {
-      return token;
+    if (token?.symbol && token?.symbol.toLowerCase().includes(q.toLowerCase())) {
+      return mint;
     }
-    if (token.name && token.name.toLowerCase().includes(q.toLowerCase())) {
-      return token;
+    if (token?.name && token?.name.toLowerCase().includes(q.toLowerCase())) {
+      return mint;
     }
   };
 };
