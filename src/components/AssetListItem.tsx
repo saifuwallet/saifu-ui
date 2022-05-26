@@ -15,9 +15,21 @@ export type AssetListItemProps = {
   className?: string;
   onClick?: () => void;
   isLoading?: boolean;
+  metadata?: TokenMetadata;
 };
 
-const AssetListItem = ({ className, tokenAccount, onClick, isLoading }: AssetListItemProps) => {
+export interface TokenMetadata {
+  name: string;
+  image: string;
+}
+
+const AssetListItem = ({
+  className,
+  tokenAccount,
+  metadata,
+  onClick,
+  isLoading,
+}: AssetListItemProps) => {
   const tokenMap = useTokenMap();
   const info = tokenMap.get(tokenAccount.mint);
   const price = usePrice(info);
@@ -37,13 +49,17 @@ const AssetListItem = ({ className, tokenAccount, onClick, isLoading }: AssetLis
       onClick={onClick}
     >
       <div className="col-span-1 row-span-2">
-        <TokenLogo size="sm" className="object-contain m-auto" url={info?.logoURI} />
+        <TokenLogo
+          size="sm"
+          className="object-contain m-auto"
+          url={info?.logoURI || metadata?.image}
+        />
       </div>
       <div className="col-span-2 text-left">
         <Text
           weight="semibold"
           isLoading={isLoading}
-          text={info?.name || short(tokenAccount.mint)}
+          text={info?.name || metadata?.name || short(tokenAccount.mint)}
         />
       </div>
       <div className="hidden lg:block col-span-2 text-right">
