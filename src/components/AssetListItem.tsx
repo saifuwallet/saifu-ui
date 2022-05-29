@@ -9,6 +9,7 @@ import { short } from '@/lib/publicKey';
 import TokenLogo from './TokenLogo';
 import Text from './Text';
 import clsx from 'clsx';
+import { TokenMetadata } from '@/types';
 
 export type AssetListItemProps = {
   mint: string;
@@ -18,11 +19,6 @@ export type AssetListItemProps = {
   isLoading?: boolean;
   metadata?: TokenMetadata;
 };
-
-export interface TokenMetadata {
-  name: string;
-  image: string;
-}
 
 const AssetListItem = ({
   className,
@@ -35,8 +31,6 @@ const AssetListItem = ({
   const tokenMap = useTokenMap();
   const info = tokenMap.get(mint);
   const price = usePrice(info);
-  // token metadata from metadata program (if available)
-  // const metadata = useTokenMetadata(tokenAccount.mint);
   const tokenBalance = useMemo(
     () => tokenAccount && lamportsToSol(Number(tokenAccount.amount), tokenAccount.decimals),
     [tokenAccount]
