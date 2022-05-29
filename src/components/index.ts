@@ -15,3 +15,5 @@ export { default as AmountInput } from '@/components/AmountInput';
 export { default as TokenSelectorModal } from '@/components/TokenSelectorModal';
 export { default as AssetList } from '@/components/AssetList';
 export { default as AssetListItem } from '@/components/AssetListItem';
+export { default as ActivityList } from '@/components/ActivityList';
+export { default as ActivityListItem } from '@/components/ActivityListItem';

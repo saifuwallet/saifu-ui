@@ -7,6 +7,7 @@ export const variants = {
   inverse: 'text-white dark:text-black',
   inverseSecondary: 'text-orange-200',
   danger: 'text-red-500',
+  success: 'text-green-500',
 };
 
 export const sizes = {

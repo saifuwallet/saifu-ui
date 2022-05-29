@@ -4,15 +4,15 @@ import Text from './Text';
 
 const AssetList = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Card className="divide-y" size="noPadding">
+    <Card size="noPadding">
       <Header />
-      {children}
+      <div className="divide-y">{children}</div>
     </Card>
   );
 };
 
 const Header = () => (
-  <div className="hidden p-3 lg:grid lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200">
+  <div className="hidden p-3 lg:grid lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200 border-b-2 border-gray-100">
     <div className="col-start-2 col-span-2 row-span-2">
       <Text variant="secondary" weight="semibold" text="Asset" />
     </div>
