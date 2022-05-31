@@ -47,9 +47,11 @@ const ActivityListItem = ({
         <Text weight="semibold" isLoading={isLoading} text={title} />
       </div>
       <div className="hidden lg:block lg:col-span-3 text-right">
-        {diffs?.map((diff) => (
-          <ActivityDiff diff={diff} />
-        ))}
+        {diffs
+          ?.filter((v) => v.amount !== '0')
+          .map((diff) => (
+            <ActivityDiff diff={diff} />
+          ))}
       </div>
       <div className="col-span-2 text-right">
         <Text isLoading={isLoading} text={displayDate(blockTime)} />
