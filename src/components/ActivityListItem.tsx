@@ -1,6 +1,6 @@
 import useTokenMap from '@/hooks/useTokenMap';
 import { displayDate } from '@/lib/dayjs';
-import { displayAmount } from '@/lib/number';
+import { displayAmount, lamportsToSol } from '@/lib/number';
 import { short } from '@/lib/publicKey';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
@@ -21,6 +21,7 @@ export interface TransactionTokenDifference {
   mint: string;
   amount: string;
   isSol: boolean;
+  decimals: number;
 }
 
 const ActivityListItem = ({
@@ -67,11 +68,17 @@ const ActivityDiff = ({ diff }: { diff: TransactionTokenDifference }) => {
   const tokenMap = useTokenMap();
   const token = tokenMap.get(diff.mint);
   const { amount, negative } = useMemo(() => {
+    const solAmount = lamportsToSol(Number(diff.amount) || 0, diff?.decimals || 0);
+
     return {
-      amount: displayAmount(Number(diff.amount), token?.decimals || 0),
+      amount: solAmount.toFixed(4),
       negative: Number(diff.amount) < 0,
     };
   }, [tokenMap, diff]);
+
+  if (parseFloat(amount) === 0) {
+    return <></>;
+  }
 
   return (
     <div>

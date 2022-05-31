@@ -25,6 +25,7 @@ Primary.args = {
       mint: 'sol',
       amount: '10000000',
       isSol: true,
+      decimals: 9,
     },
   ],
 };
