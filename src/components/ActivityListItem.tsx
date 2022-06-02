@@ -68,7 +68,10 @@ const ActivityDiff = ({ diff }: { diff: TransactionTokenDifference }) => {
   const tokenMap = useTokenMap();
   const token = tokenMap.get(diff.mint);
   const { amount, negative } = useMemo(() => {
-    const solAmount = lamportsToSol(Number(diff.amount) || 0, diff?.decimals || 0);
+    // use decimals from diff if present, if not use from token, lastly fall back to 0
+    // sol is a special case so we can override to 9
+    const decimals = diff.isSol ? 9 : (diff?.decimals ?? token?.decimals) ?? 0;
+    const solAmount = lamportsToSol(Number(diff.amount) || 0, decimals);
 
     return {
       amount: solAmount.toFixed(4),
