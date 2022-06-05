@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { displayUSD, lamportsToSol } from '../lib/number';
 import ListItem from './ListItem';
 import TokenLogo from './TokenLogo';
-import Text from './Text';
+import Text from './Elements/Text';
 import { short } from '../lib/publicKey';
 import { TokenAccount, TokenMetadata } from '../types';
 import useTokenMap from '../hooks/useTokenMap';
@@ -50,13 +50,10 @@ const TokenListItem = ({
       </div>
       <div className="flex-none text-right">
         <div>
-          <Text
-            weight="semibold"
-            text={`${lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals)}`}
-          />
+          <Text text={`${lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals)}`} />
         </div>
         <div>
-          <Text variant="secondary" text={tokenBalanceUSD} />
+          <Text variant="secondary" size="sm" text={tokenBalanceUSD} />
         </div>
       </div>
     </ListItem>

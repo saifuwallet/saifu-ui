@@ -1,13 +1,13 @@
 import { TokenInfo } from '@solana/spl-token-registry';
 import { sort } from 'fast-sort';
-import Input from './Input';
+import Input from './Form/Input';
 import React, { useCallback, useMemo, useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
 
 import usePrices from '../hooks/usePrices';
 import useTokenMap from '../hooks/useTokenMap';
 import { TokenAccount } from '../types';
-import Modal from './Modal';
+import Modal from './Elements/Modal';
 import TokenListItem from './TokenListItem';
 
 export default function TokenSelectorModal({
@@ -53,7 +53,6 @@ export default function TokenSelectorModal({
     () => tokens && tokens.filter(filterByQuery(query, tokenMap)),
     [query, tokens]
   );
-  // balance => amount
 
   return (
     <Modal title="Select Token" isOpen={isOpen} onClose={onClose}>

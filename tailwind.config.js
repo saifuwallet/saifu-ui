@@ -24,12 +24,6 @@ module.exports = {
       colors: {
         orange: colors.orange,
       },
-      fontSize: {
-        xs: '11px',
-      },
-      maxWidth: {
-        '4/5': '80%',
-      },
     },
   },
   plugins: [forms, scrollbarHide],

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Button from './Button';
+import { StarIcon } from '@heroicons/react/solid';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,37 +17,67 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  primary: true,
   label: 'Button',
-  text: 'Primary',
+  children: 'Primary',
   variant: 'primary',
+};
+
+export const PrimaryWithStartIcon = Template.bind({});
+PrimaryWithStartIcon.args = {
+  label: 'Button',
+  children: 'Primary',
+  startIcon: StarIcon,
+  variant: 'primary',
+};
+
+export const PrimaryWithEndIcon = Template.bind({});
+PrimaryWithEndIcon.args = {
+  label: 'Button',
+  children: 'Primary',
+  endIcon: StarIcon,
+  variant: 'primary',
+};
+
+export const GhostWithEndIcon = Template.bind({});
+GhostWithEndIcon.args = {
+  label: 'Button',
+  children: 'Ghost',
+  endIcon: StarIcon,
+  variant: 'ghost',
 };
 
 export const Inverse = Template.bind({});
 Inverse.args = {
   label: 'Button',
-  text: 'Inverse',
+  children: 'Inverse',
   variant: 'inverse',
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  label: 'Button',
+  children: 'Danger',
+  variant: 'danger',
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: 'lg',
   label: 'Button',
-  text: 'Large',
+  children: 'Large',
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: 'sm',
   label: 'Button',
-  text: 'Small',
+  children: 'Small',
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
   label: 'Button',
-  text: 'Loading',
+  children: 'Loading',
   variant: 'primary',
   isLoading: true,
 };

@@ -1,7 +1,7 @@
 {
   "name": "@saifuwallet/saifu-ui",
   "description": "React component library for saifu wallet.",
-  "version": "0.0.11",
+  "version": "0.1.0-alpha1",
   "author": {
     "name": "Tengis Bat-Ulzii",
     "email": "tengis@saifuwallet.com",
@@ -55,6 +55,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-polymorphic-box": "^3.0.3",
     "react-query": "^3.39.0",
     "react-window": "^1.8.7",
     "tailwind-scrollbar-hide": "^1.1.7",
@@ -98,5 +99,8 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

@@ -1,84 +1,91 @@
 import clsx from 'clsx';
-import React, { ComponentPropsWithoutRef, ElementType, ReactElement } from 'react';
+import React, { ComponentProps, ElementType, FC } from 'react';
 
 import colors from '@/constants/colors';
 
 import Spinner from '@/components/Elements/Spinner';
-import Text, { weights } from '@/components/Text';
+
+import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
-  primary: `shadow-md ${colors.background.highlight}`,
-  inverse: 'hover:text-orange-500',
-  danger: `shadow-md ${colors.background.danger}`,
+  primary:
+    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-400 text-white drop-shadow-sm shadow-sm',
+  inverse: 'hover:text-orange-500 text-black',
+  ghost: 'hover:text-orange-500 text-black',
+  danger: `${colors.background.danger} text-white`,
 };
 
 const sizes = {
-  xs: 'py-1 px-2',
-  sm: 'py-2 px-4',
-  md: 'py-2 px-4',
-  lg: 'py-2 px-4',
+  xs: 'px-3 py-2 text-xs',
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-4 py-2 text-base',
+  lg: 'px-5 py-3 text-base',
+  xl: 'px-6 py-3.5 text-base',
 };
 
-const textWeights: Record<keyof typeof sizes, keyof typeof weights> = {
-  xs: 'normal',
-  sm: 'normal',
-  md: 'medium',
-  lg: 'semibold',
+const spinnerSizes = {
+  xs: 'h-4 w-4',
+  sm: 'h-4 w-4',
+  md: 'h-5 w-5',
+  lg: 'h-6 w-6',
+  xl: 'h-6 w-6',
 };
 
 type IconProps =
-  | { startIcon: ReactElement; endIcon?: never }
-  | { endIcon: ReactElement; startIcon?: never }
+  | { startIcon: FC<ComponentProps<'svg'>>; endIcon?: never }
+  | { endIcon: FC<ComponentProps<'svg'>>; startIcon?: never }
   | { endIcon?: undefined; startIcon?: undefined };
 
-export type ButtonProps<T extends ElementType> = {
+export type OwnProps = {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   isLoading?: boolean;
-  text: string;
-  as?: T;
-  className?: string;
 } & IconProps;
 
-function Button<T extends ElementType = 'button'>({
-  variant = 'primary',
-  size = 'md',
-  isLoading = false,
-  className,
-  startIcon,
-  endIcon,
-  as,
-  ...props
-}: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
-  const Component = as || 'button';
-  return (
-    <Component
-      className={clsx(
-        'flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed rounded-md focus:outline-none space-x-2',
-        variants[variant],
-        sizes[size],
-        className
-      )}
-      {...props}
-    >
-      {isLoading ? (
-        <Spinner variant={variant === 'inverse' ? 'gray' : 'white'} className="text-lg mr-2" />
-      ) : (
-        <>
-          {startIcon}
-          <Text
-            weight={textWeights[size]}
-            size={size}
-            variant={variant === 'inverse' ? 'secondary' : 'inverse'}
-            text={props.text}
-          />
-          {endIcon}
-        </>
-      )}
-    </Component>
-  );
-}
+export type ButtonProps<E extends React.ElementType> = PolymorphicComponentProps<E, OwnProps>;
 
-Button.displayName = 'Button';
+const defaultElement = 'button';
+
+const Button: <E extends React.ElementType = typeof defaultElement>(
+  props: ButtonProps<E>
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    {
+      variant = 'primary',
+      size = 'md',
+      isLoading = false,
+      className,
+      startIcon: StartIcon,
+      endIcon: EndIcon,
+      children,
+      ...props
+    }: ButtonProps<E>,
+    ref: typeof props.ref
+  ) => {
+    return (
+      <Box
+        as={defaultElement}
+        ref={ref}
+        className={clsx(
+          'flex justify-center disabled:opacity-70 disabled:cursor-not-allowed rounded-lg focus:outline-none font-medium text-center',
+          variants[variant],
+          sizes[size],
+          className
+        )}
+        {...props}
+      >
+        <div className="my-auto">
+          {isLoading ? (
+            <Spinner className={clsx('mr-2', spinnerSizes[size])} />
+          ) : (
+            StartIcon && <StartIcon className="h-4 w-4 mr-2" />
+          )}
+        </div>
+        {children}
+        <div className="my-auto">{EndIcon && <EndIcon className="h-4 w-4 ml-2" />}</div>
+      </Box>
+    );
+  }
+);
 
 export default Button;

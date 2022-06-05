@@ -40,6 +40,7 @@ NoInfo.args = {
 
 export const Loading = Template.bind({});
 Loading.args = {
+  mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   tokenAccount,
   isLoading: true,
 };

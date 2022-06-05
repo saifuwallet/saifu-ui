@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import Label from './Label';
+import Text from '@/components/Elements/Text';
+import Label from '@/components/Form/Label';
 
 const variants = {
   primary: 'border-none rounded-lg shadow-sm',
@@ -25,7 +26,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         className={clsx('block w-full p-2.5 focus:ring-0', variants[variant], className)}
         {...props}
       />
-      {errorText && <p className="text-red-500 text-xs px-2 py-1">{errorText}</p>}
+      {errorText && (
+        <Text as="p" variant="danger" size="sm" className="px-2 py-1" text={errorText} />
+      )}
     </div>
   )
 );

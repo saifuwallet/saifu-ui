@@ -3,6 +3,7 @@ import { XIcon } from '@heroicons/react/outline';
 import React, { Fragment } from 'react';
 
 import IconButton from './IconButton';
+import Text from './Text';
 
 function Modal({
   title,
@@ -44,19 +45,18 @@ function Modal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block max-w-md container p-4 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-5">
-              <div className="flex justify-between text-left items-center">
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                  {title}
-                </Dialog.Title>
+            <div className="inline-block max-w-md container p-4 overflow-hidden align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-3">
+              <div className="flex justify-between text-left items-center px-2 align-baseline">
+                <Dialog.Title as={Text} text={title} size="lg" weight="medium" />
                 <IconButton
-                  className="relative"
+                  className="my-auto"
                   aria-label="close"
+                  variant="ghost"
                   onClick={onClose}
-                  icon={<XIcon className="h-5 w-5" />}
+                  icon={XIcon}
                 />
               </div>
-              <div>{children}</div>
+              <div className="!text-left">{children}</div>
             </div>
           </Transition.Child>
         </div>

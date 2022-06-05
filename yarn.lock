@@ -10304,6 +10304,11 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.1.0.tgz#61aaed3096d30eacf2a2127118b5b41387d32a67"
   integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
 
+react-polymorphic-box@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-polymorphic-box/-/react-polymorphic-box-3.0.3.tgz#4d0fe6e874a288c5c0868dce514962b100815d04"
+  integrity sha512-UUm65IGKXW7/KW4z4hyPFaQ8GMcdRMlMm3jPlU26DZ8CaWUbNP3wLD9dfjjSapgFC63uXCibtn6Th6IYd1Cm8g==
+
 react-query@^3.39.0:
   version "3.39.0"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.0.tgz#0caca7b0da98e65008bbcd4df0d25618c2100050"

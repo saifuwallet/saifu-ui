@@ -1,11 +1,11 @@
 import useTokenMap from '@/hooks/useTokenMap';
 import { displayDate } from '@/lib/dayjs';
-import { displayAmount, lamportsToSol } from '@/lib/number';
+import { lamportsToSol } from '@/lib/number';
 import { short } from '@/lib/publicKey';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
-import Text from './Text';
+import Text from '@/components/Elements/Text';
 
 export interface ActivityListItemProps {
   onClick?: () => void;
@@ -42,10 +42,10 @@ const ActivityListItem = ({
       onClick={onClick}
     >
       <div className="col-span-1 row-span-2">
-        <CheckCircleIcon className="h-6 w-6 text-gray-400 m-auto" />
+        <CheckCircleIcon className="h-7 w-7 text-gray-400 m-auto" />
       </div>
       <div className="col-span-3">
-        <Text weight="semibold" isLoading={isLoading} text={title} />
+        <Text weight="medium" isLoading={isLoading} text={title} />
       </div>
       <div className="hidden lg:block lg:col-span-3 text-right">
         {diffs
@@ -70,7 +70,7 @@ const ActivityDiff = ({ diff }: { diff: TransactionTokenDifference }) => {
   const { amount, negative } = useMemo(() => {
     // use decimals from diff if present, if not use from token, lastly fall back to 0
     // sol is a special case so we can override to 9
-    const decimals = diff.isSol ? 9 : (diff?.decimals ?? token?.decimals) ?? 0;
+    const decimals = diff.isSol ? 9 : diff?.decimals ?? token?.decimals ?? 0;
     const solAmount = lamportsToSol(Number(diff.amount) || 0, decimals);
 
     return {
@@ -86,6 +86,7 @@ const ActivityDiff = ({ diff }: { diff: TransactionTokenDifference }) => {
   return (
     <div>
       <Text
+        size="sm"
         variant={negative ? 'danger' : 'success'}
         text={`${amount} ${token?.symbol || short(diff.mint)}`}
       />

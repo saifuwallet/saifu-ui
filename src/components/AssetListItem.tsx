@@ -7,7 +7,7 @@ import { displayAmount, displayUSD, lamportsToSol } from '@/lib/number';
 import { short } from '@/lib/publicKey';
 
 import TokenLogo from './TokenLogo';
-import Text from './Text';
+import Text from './Elements/Text';
 import clsx from 'clsx';
 import { TokenMetadata } from '@/types';
 
@@ -39,42 +39,41 @@ const AssetListItem = ({
   return (
     <div
       className={clsx(
-        'p-3 grid grid-cols-5 lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200 hover:bg-gray-50 cursor-pointer',
+        'p-3 grid leading-4 grid-cols-5 lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200 hover:bg-gray-50 cursor-pointer',
         className
       )}
       onClick={onClick}
     >
       <div className="col-span-1 row-span-2">
-        <TokenLogo
-          size="sm"
-          className="object-contain m-auto"
-          url={info?.logoURI || metadata?.image}
-        />
+        <TokenLogo size="sm" className="m-auto" url={info?.logoURI || metadata?.image} />
       </div>
       <div className="col-span-2 text-left">
         <Text
-          weight="semibold"
+          weight="medium"
           isLoading={isLoading}
-          text={info?.name || metadata?.name || short(mint)}
+          text={info?.symbol || metadata?.name || short(mint)}
         />
       </div>
       <div className="hidden lg:block col-span-2 text-right">
         <Text
+          size="sm"
           isLoading={price.isLoading}
           text={displayUSD(price.data)}
           placeholderCharLength={10}
         />
       </div>
-      <div className="col-span-2 text-right">
+      <div className="col-span-2 text-right lg:order-last">
         <Text
+          size="sm"
           isLoading={price.isLoading}
           text={displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
-          weight="semibold"
+          weight="medium"
           placeholderCharLength={10}
         />
       </div>
-      <div className="col-span-4 lg:col-span-2 text-right">
+      <div className="col-span-4 lg:col-span-2 lg:text-right">
         <Text
+          size="sm"
           placeholderCharLength={10}
           isLoading={isLoading}
           text={`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
