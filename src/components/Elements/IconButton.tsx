@@ -19,6 +19,8 @@ const sizes = {
   md: 'p-2.5',
   lg: 'p-2.5',
   xl: 'p-2.5',
+  '2xl': 'p-2.5',
+  '3xl': 'p-2.5',
 };
 
 const iconSizes = {

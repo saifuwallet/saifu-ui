@@ -48,6 +48,32 @@ Large.args = {
   variant: 'primary',
 };
 
+export const XL = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+XL.args = {
+  label: 'IconButton',
+  icon: StarIcon,
+  size: 'xl',
+  variant: 'primary',
+};
+
+export const twoXL = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+twoXL.args = {
+  label: 'IconButton',
+  icon: StarIcon,
+  size: '2xl',
+  variant: 'primary',
+};
+
+export const threeXL = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+threeXL.args = {
+  label: 'IconButton',
+  icon: StarIcon,
+  size: '3xl',
+  variant: 'primary',
+};
 export const Small = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Small.args = {
