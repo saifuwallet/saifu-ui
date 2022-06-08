@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import Text from './Elements/Text';
 
-import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
+import { PolymorphicComponentProps } from 'react-polymorphic-box';
+import Box from './Elements/Box';
 
 export type OwnProps = {
   text: string;
@@ -34,29 +35,19 @@ const SettingListItem: <E extends React.ElementType = typeof defaultElement>(
   ) => {
     return (
       <Box
+        start={StartIcon && <StartIcon className="h-7 w-7 text-gray-400 mr-3 my-auto" />}
         as={defaultElement}
         ref={ref}
         aria-disabled={isDisabled}
-        className={clsx(
-          'flex p-4 transition-all ease-in-out duration-200 hover:bg-gray-50 cursor-pointer w-full',
-          isDisabled && 'cursor-not-allowed',
-          className
-        )}
+        className={clsx('text-left w-full', isDisabled && 'cursor-not-allowed', className)}
         {...props}
       >
-        {StartIcon && (
-          <div className={clsx('flex-none pr-4 m-auto')}>
-            {StartIcon && <StartIcon className="h-7 w-7 text-gray-400" />}
-          </div>
-        )}
-        <div className="flex-grow w-56 mr-3">
-          <Text as="p" className="text-left" weight="semibold">
-            {text}
-          </Text>
-          <Text as="p" className="text-left" size="sm" variant="secondary">
-            {subText}
-          </Text>
-        </div>
+        <Text as="p" weight="semibold">
+          {text}
+        </Text>
+        <Text as="p" size="sm" variant="secondary">
+          {subText}
+        </Text>
       </Box>
     );
   }

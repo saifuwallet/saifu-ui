@@ -7,7 +7,6 @@ import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
   primary: 'bg-white dark:bg-gray-800',
-  highlight: `${colors.background.highlight} text-white`,
 };
 
 const sizes = {

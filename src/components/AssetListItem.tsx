@@ -10,7 +10,7 @@ import TokenLogo from './TokenLogo';
 import Text from './Elements/Text';
 import clsx from 'clsx';
 import { TokenMetadata } from '@/types';
-import Box from './Box';
+import Box from './Elements/Box';
 
 export type AssetListItemProps = {
   mint: string;

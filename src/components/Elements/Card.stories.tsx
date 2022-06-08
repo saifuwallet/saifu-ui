@@ -20,26 +20,3 @@ Primary.args = {
   children: 'Primary',
   variant: 'primary',
 };
-
-export const Highlight = Template.bind({});
-Highlight.args = {
-  label: 'Card',
-  text: 'Highlight',
-  variant: 'highlight',
-  children: 'Highlight',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'lg',
-  label: 'Card',
-  children: 'Large',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'sm',
-  label: 'Card',
-  text: 'Small',
-  children: 'Small',
-};

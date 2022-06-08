@@ -47,7 +47,9 @@ function Modal({
           >
             <div className="inline-block max-w-md container p-4 overflow-hidden align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-3">
               <div className="flex justify-between text-left items-center px-2 align-baseline">
-                <Dialog.Title as={Text} text={title} size="lg" weight="medium" />
+                <Dialog.Title as={Text} size="lg" weight="medium">
+                  {title}
+                </Dialog.Title>
                 <IconButton
                   className="my-auto"
                   aria-label="close"
