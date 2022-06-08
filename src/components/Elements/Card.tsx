@@ -38,7 +38,6 @@ type OwnProps = {
   size?: keyof typeof sizes;
   shadow?: keyof typeof shadows;
   rounded?: keyof typeof rounding;
-  children?: React.ReactNode;
   hover?: boolean;
 };
 
@@ -56,7 +55,6 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
       shadow = 'md',
       hover = false,
       rounded = 'md',
-      children,
       className,
       ...props
     }: CardProps<E>,
@@ -76,9 +74,7 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
           hover && 'transition ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-gray-700'
         )}
         {...props}
-      >
-        {children}
-      </Box>
+      />
     );
   }
 );

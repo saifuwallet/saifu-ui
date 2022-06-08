@@ -6,6 +6,8 @@ import { CheckCircleIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 import Text from '@/components/Elements/Text';
+import Box from './Box';
+import Tag from '@/components/Elements/Tag';
 
 export interface ActivityListItemProps {
   onClick?: () => void;
@@ -30,37 +32,40 @@ const ActivityListItem = ({
   onClick,
   blockTime,
   title,
-  subTitle,
   diffs,
 }: ActivityListItemProps) => {
   return (
-    <div
-      className={clsx(
-        'p-3 grid grid-cols-6 lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200 hover:bg-gray-50 cursor-pointer',
-        className
-      )}
+    <Box
+      className={clsx(className)}
+      startIcon={<CheckCircleIcon className="h-10 w-10 mr-2 text-gray-400 my-auto" />}
       onClick={onClick}
     >
-      <div className="col-span-1 row-span-2">
-        <CheckCircleIcon className="h-7 w-7 text-gray-400 m-auto" />
+      <div className="flex leading-5">
+        <div className="grow overflow-clip">
+          <div>
+            <Text weight="semibold" isLoading={isLoading} text={title} />
+          </div>
+          <div>
+            <Text
+              size="sm"
+              variant="secondary"
+              isLoading={isLoading}
+              text={displayDate(blockTime)}
+            />
+          </div>
+        </div>
+        <div className="flex-none text-right">
+          <div className="space-y-1">
+            {diffs
+              ?.filter((v) => v.amount !== '0')
+              .slice(0, 2)
+              .map((diff) => (
+                <ActivityDiff diff={diff} />
+              ))}
+          </div>
+        </div>
       </div>
-      <div className="col-span-3">
-        <Text weight="medium" isLoading={isLoading} text={title} />
-      </div>
-      <div className="hidden lg:block lg:col-span-3 text-right">
-        {diffs
-          ?.filter((v) => v.amount !== '0')
-          .map((diff) => (
-            <ActivityDiff diff={diff} />
-          ))}
-      </div>
-      <div className="col-span-2 text-right">
-        <Text isLoading={isLoading} text={displayDate(blockTime)} />
-      </div>
-      <div className="col-span-5 lg:col-span-6">
-        <Text variant="secondary" isLoading={isLoading} text={subTitle} />
-      </div>
-    </div>
+    </Box>
   );
 };
 
@@ -85,10 +90,10 @@ const ActivityDiff = ({ diff }: { diff: TransactionTokenDifference }) => {
 
   return (
     <div>
-      <Text
+      <Tag
         size="sm"
         variant={negative ? 'danger' : 'success'}
-        text={`${amount} ${token?.symbol || short(diff.mint)}`}
+        text={`${negative ? '' : '+'}${amount} ${token?.symbol || short(diff.mint)}`}
       />
     </div>
   );

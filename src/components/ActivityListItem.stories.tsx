@@ -17,14 +17,26 @@ const Template: ComponentStory<typeof ActivityListItem> = (args) => <ActivityLis
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  title: 'title',
-  subTitle: 'subTitle',
+  title: 'Transfer',
+  subTitle: 'to fkdfdfsakfldsafdsafdjsaklfdsa',
   blockTime: 1,
   diffs: [
     {
-      mint: 'sol',
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
       amount: '10000000',
       isSol: true,
+      decimals: 9,
+    },
+    {
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+      amount: '-10000000',
+      isSol: true,
+      decimals: 9,
+    },
+    {
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1s',
+      amount: '-1000000',
+      isSol: false,
       decimals: 9,
     },
   ],

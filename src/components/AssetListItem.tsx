@@ -10,6 +10,7 @@ import TokenLogo from './TokenLogo';
 import Text from './Elements/Text';
 import clsx from 'clsx';
 import { TokenMetadata } from '@/types';
+import Box from './Box';
 
 export type AssetListItemProps = {
   mint: string;
@@ -37,51 +38,58 @@ const AssetListItem = ({
   );
 
   return (
-    <div
+    <Box
+      startIcon={
+        <TokenLogo size="sm" className="my-auto mr-3" url={info?.logoURI || metadata?.image} />
+      }
       className={clsx(
-        'p-3 grid leading-4 grid-cols-5 lg:grid-cols-9 gap-x-2 transition-all ease-in-out items-center duration-200 hover:bg-gray-50 cursor-pointer',
+        'p-3 flex transition-all ease-in-out duration-200 hover:bg-gray-50 cursor-pointer',
         className
       )}
       onClick={onClick}
     >
-      <div className="col-span-1 row-span-2">
-        <TokenLogo size="sm" className="m-auto" url={info?.logoURI || metadata?.image} />
+      <div className="flex leading-5">
+        <div className="grow">
+          <div>
+            <Text
+              weight="semibold"
+              isLoading={isLoading}
+              text={info?.symbol || metadata?.name || short(mint)}
+            />
+          </div>
+          <div>
+            <Text
+              size="sm"
+              variant="secondary"
+              placeholderCharLength={10}
+              isLoading={isLoading}
+              text={`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
+                info?.symbol ? info?.symbol : ''
+              }`}
+            />
+          </div>
+        </div>
+        <div className="flex-none text-right">
+          <div>
+            <Text
+              isLoading={price.isLoading}
+              text={displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
+              weight="medium"
+              placeholderCharLength={10}
+            />
+          </div>
+          <div>
+            <Text
+              variant="secondary"
+              size="sm"
+              isLoading={price.isLoading}
+              text={displayUSD(price.data)}
+              placeholderCharLength={10}
+            />
+          </div>
+        </div>
       </div>
-      <div className="col-span-2 text-left">
-        <Text
-          weight="medium"
-          isLoading={isLoading}
-          text={info?.symbol || metadata?.name || short(mint)}
-        />
-      </div>
-      <div className="hidden lg:block col-span-2 text-right">
-        <Text
-          size="sm"
-          isLoading={price.isLoading}
-          text={displayUSD(price.data)}
-          placeholderCharLength={10}
-        />
-      </div>
-      <div className="col-span-2 text-right lg:order-last">
-        <Text
-          size="sm"
-          isLoading={price.isLoading}
-          text={displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
-          weight="medium"
-          placeholderCharLength={10}
-        />
-      </div>
-      <div className="col-span-4 lg:col-span-2 lg:text-right">
-        <Text
-          size="sm"
-          placeholderCharLength={10}
-          isLoading={isLoading}
-          text={`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
-            info?.symbol ? info?.symbol : ''
-          }`}
-        />
-      </div>
-    </div>
+    </Box>
   );
 };
 
