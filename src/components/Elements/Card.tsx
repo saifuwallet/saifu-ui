@@ -12,10 +12,7 @@ const variants = {
 
 const sizes = {
   noPadding: 'p-0',
-  xs: 'p-1',
-  sm: 'p-2',
   md: 'p-4',
-  lg: 'p-6',
 };
 
 const shadows = {

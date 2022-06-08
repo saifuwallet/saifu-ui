@@ -6,10 +6,10 @@ export type BoxProps = {
   className?: string;
   onClick?: () => void;
   children: React.ReactNode;
-  startIcon?: JSX.Element;
+  start?: React.ReactNode;
 };
 
-const Box = ({ className, startIcon, onClick, children }: BoxProps) => {
+const Box = ({ className, start, onClick, children }: BoxProps) => {
   return (
     <div
       className={clsx(
@@ -18,7 +18,7 @@ const Box = ({ className, startIcon, onClick, children }: BoxProps) => {
       )}
       onClick={onClick}
     >
-      <div className="flex-none self-center">{startIcon}</div>
+      <div className="flex-none self-center">{start}</div>
       <div className="grow">{children}</div>
     </div>
   );

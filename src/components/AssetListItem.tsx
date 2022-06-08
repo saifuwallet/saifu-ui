@@ -39,7 +39,7 @@ const AssetListItem = ({
 
   return (
     <Box
-      startIcon={
+      start={
         <TokenLogo size="sm" className="my-auto mr-3" url={info?.logoURI || metadata?.image} />
       }
       className={clsx(
@@ -51,11 +51,9 @@ const AssetListItem = ({
       <div className="flex leading-5">
         <div className="grow">
           <div>
-            <Text
-              weight="semibold"
-              isLoading={isLoading}
-              text={info?.symbol || metadata?.name || short(mint)}
-            />
+            <Text weight="semibold" isLoading={isLoading}>
+              {info?.symbol || metadata?.name || short(mint)}
+            </Text>
           </div>
           <div>
             <Text
@@ -63,29 +61,26 @@ const AssetListItem = ({
               variant="secondary"
               placeholderCharLength={10}
               isLoading={isLoading}
-              text={`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
-                info?.symbol ? info?.symbol : ''
-              }`}
-            />
+            >{`${displayAmount(Number(tokenAccount?.amount), tokenAccount?.decimals || 0)} ${
+              info?.symbol ? info?.symbol : ''
+            }`}</Text>
           </div>
         </div>
         <div className="flex-none text-right">
           <div>
-            <Text
-              isLoading={price.isLoading}
-              text={displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
-              weight="medium"
-              placeholderCharLength={10}
-            />
+            <Text isLoading={price.isLoading} weight="medium" placeholderCharLength={10}>
+              {displayUSD(price.data && tokenBalance && tokenBalance * price.data)}
+            </Text>
           </div>
           <div>
             <Text
               variant="secondary"
               size="sm"
               isLoading={price.isLoading}
-              text={displayUSD(price.data)}
               placeholderCharLength={10}
-            />
+            >
+              {displayUSD(price.data)}
+            </Text>
           </div>
         </div>
       </div>

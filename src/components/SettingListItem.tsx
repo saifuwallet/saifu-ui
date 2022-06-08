@@ -50,8 +50,12 @@ const SettingListItem: <E extends React.ElementType = typeof defaultElement>(
           </div>
         )}
         <div className="flex-grow w-56 mr-3">
-          <Text as="p" className="text-left" weight="semibold" text={text} />
-          <Text as="p" className="text-left" size="sm" variant="secondary" text={subText} />
+          <Text as="p" className="text-left" weight="semibold">
+            {text}
+          </Text>
+          <Text as="p" className="text-left" size="sm" variant="secondary">
+            {subText}
+          </Text>
         </div>
       </Box>
     );

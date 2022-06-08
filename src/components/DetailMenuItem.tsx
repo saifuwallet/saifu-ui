@@ -16,7 +16,7 @@ const DetailMenuItem = ({
     <Menu.Item>
       <ListItem onClick={onClick} className="align-baseline">
         <Icon className="w-5 h-5 my-auto mr-1 text-gray-500" aria-hidden="true" />
-        <Text text={title} />
+        <Text>{title}</Text>
       </ListItem>
     </Menu.Item>
   );

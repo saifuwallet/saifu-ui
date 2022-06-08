@@ -71,7 +71,9 @@ export default function AmountInput({
         <div className="flex-none self-center">
           <Button className="group" variant="inverse" size="md" type="button" onClick={onClick}>
             <TokenLogo className="mr-2 self-center" size="xs" url={logoURI} />
-            <Text size="lg" weight="medium" className="group-hover:text-orange-500" text={symbol} />
+            <Text size="lg" weight="medium" className="group-hover:text-orange-500">
+              {symbol}
+            </Text>
           </Button>
         </div>
       </div>
@@ -80,10 +82,11 @@ export default function AmountInput({
           <Text
             size="sm"
             variant="secondary"
-            text={amountInUSD}
             placeholderCharLength={10}
             isLoading={priceIsLoading || amountIsLoading}
-          />
+          >
+            {amountInUSD}
+          </Text>
           &nbsp;
         </div>
         {max && setAmount && (
@@ -94,8 +97,7 @@ export default function AmountInput({
             variant="gray-500"
             type="button"
             onClick={() => setAmount(max)}
-            text={`Max: ${max}`}
-          />
+          >{`Max: ${max}`}</Text>
         )}
       </div>
     </div>

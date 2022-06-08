@@ -9,6 +9,7 @@ import useTokenMap from '../hooks/useTokenMap';
 import { TokenAccount } from '../types';
 import Modal from './Elements/Modal';
 import TokenListItem from './TokenListItem';
+import AssetListItem from './AssetListItem';
 
 export default function TokenSelectorModal({
   onSelect,

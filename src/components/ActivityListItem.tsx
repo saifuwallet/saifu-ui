@@ -37,21 +37,20 @@ const ActivityListItem = ({
   return (
     <Box
       className={clsx(className)}
-      startIcon={<CheckCircleIcon className="h-10 w-10 mr-2 text-gray-400 my-auto" />}
+      start={<CheckCircleIcon className="h-10 w-10 mr-2 text-gray-400 my-auto" />}
       onClick={onClick}
     >
       <div className="flex leading-5">
         <div className="grow overflow-clip">
           <div>
-            <Text weight="semibold" isLoading={isLoading} text={title} />
+            <Text weight="semibold" isLoading={isLoading}>
+              {title}
+            </Text>
           </div>
           <div>
-            <Text
-              size="sm"
-              variant="secondary"
-              isLoading={isLoading}
-              text={displayDate(blockTime)}
-            />
+            <Text size="sm" variant="secondary" isLoading={isLoading}>
+              {displayDate(blockTime)}
+            </Text>
           </div>
         </div>
         <div className="flex-none text-right">

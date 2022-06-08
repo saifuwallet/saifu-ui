@@ -45,15 +45,17 @@ const TokenListItem = ({
       </div>
       <div className="flex-grow text-left">
         <div>
-          <Text weight="semibold" text={tokenInfo?.symbol || metadata?.name || short(mint)} />
+          <Text weight="semibold">{tokenInfo?.symbol || metadata?.name || short(mint)}</Text>
         </div>
       </div>
       <div className="flex-none text-right">
         <div>
-          <Text text={`${lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals)}`} />
+          <Text>{`${lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals)}`}</Text>
         </div>
         <div>
-          <Text variant="secondary" size="sm" text={tokenBalanceUSD} />
+          <Text variant="secondary" size="sm">
+            {tokenBalanceUSD}
+          </Text>
         </div>
       </div>
     </ListItem>

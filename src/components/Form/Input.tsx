@@ -26,7 +26,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={clsx('block w-full p-2.5 focus:ring-0', variants[variant], className)}
         {...props}
       />
-      {errorText && <Text variant="danger" size="sm" className="px-2 py-1" text={errorText} />}
+      {errorText && (
+        <Text variant="danger" size="sm" className="px-2 py-1">
+          {errorText}
+        </Text>
+      )}
     </div>
   )
 );

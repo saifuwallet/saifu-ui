@@ -21,6 +21,8 @@ export const sizes = {
   lg: 'text-lg',
   xl: 'text-xl',
   '2xl': 'text-2xl',
+  '3xl': 'text-3xl',
+  '4xl': 'text-4xl',
 };
 
 export const weights = {
@@ -34,7 +36,6 @@ export const weights = {
 
 export type OwnProps = {
   isLoading?: boolean;
-  text?: string;
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   weight?: keyof typeof weights;
@@ -57,6 +58,7 @@ const Text: <E extends React.ElementType = typeof defaultElement>(
       size = 'md',
       placeholderCharLength = 15,
       weight = 'normal',
+      children,
       ...props
     }: TextProps<E>,
     ref: typeof props.ref
@@ -74,7 +76,7 @@ const Text: <E extends React.ElementType = typeof defaultElement>(
         )}
         {...props}
       >
-        {isLoading ? 'x'.repeat(placeholderCharLength) : text}
+        {isLoading ? 'x'.repeat(placeholderCharLength) : children}
       </Box>
     );
   }

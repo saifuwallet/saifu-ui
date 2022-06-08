@@ -41,3 +41,32 @@ Primary.args = {
     },
   ],
 };
+
+export const Loading = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Loading.args = {
+  isLoading: true,
+  title: 'Transfer',
+  subTitle: 'to fkdfdfsakfldsafdsafdjsaklfdsa',
+  blockTime: 1,
+  diffs: [
+    {
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+      amount: '10000000',
+      isSol: true,
+      decimals: 9,
+    },
+    {
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+      amount: '-10000000',
+      isSol: true,
+      decimals: 9,
+    },
+    {
+      mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1s',
+      amount: '-1000000',
+      isSol: false,
+      decimals: 9,
+    },
+  ],
+};

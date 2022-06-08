@@ -27,7 +27,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {...props}
       />
       {errorText && (
-        <Text as="p" variant="danger" size="sm" className="px-2 py-1" text={errorText} />
+        <Text as="p" variant="danger" size="sm" className="px-2 py-1">
+          {errorText}
+        </Text>
       )}
     </div>
   )
