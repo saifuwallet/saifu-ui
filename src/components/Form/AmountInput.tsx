@@ -6,6 +6,7 @@ import Button from '@/components/Elements/Button';
 import Text from '@/components/Elements/Text';
 import TokenLogo from '@/components/TokenLogo';
 import clsx from 'clsx';
+import Card from '../Elements/Card';
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`);
 export function escapeRegExp(string: string): string {
@@ -43,7 +44,7 @@ export default function AmountInput({
   );
 
   return (
-    <div className={clsx('p-2 rounded-md bg-gray-100', className)}>
+    <Card variant="flat" className={clsx('p-2 rounded-md bg-gray-100', className)}>
       <div className="flex">
         <div className="flex-grow w-32">
           <Input
@@ -100,6 +101,6 @@ export default function AmountInput({
           >{`Max: ${max}`}</Text>
         )}
       </div>
-    </div>
+    </Card>
   );
 }

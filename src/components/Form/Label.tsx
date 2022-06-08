@@ -1,13 +1,17 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import Text from '@/components/Elements/Text';
 
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
 
 const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   ({ className = '', ...props }, ref) => (
-    <label
+    <Text
+      as="label"
       ref={ref}
-      className={clsx('block mb-2 mt-4 text-sm font-medium text-gray-900', className)}
+      weight="medium"
+      size="sm"
+      className={clsx('block mb-2 px-2 font-medium text-black dark:text-white', className)}
       {...props}
     />
   )

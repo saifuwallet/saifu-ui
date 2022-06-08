@@ -1,24 +1,12 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import colors from '@/constants/colors';
-
 import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
-  primary: 'bg-white dark:bg-gray-800',
-};
-
-const sizes = {
-  noPadding: 'p-0',
-  md: 'p-4',
-};
-
-const shadows = {
-  none: '',
-  sm: 'shadow-sm',
-  md: 'shadow-md',
-  lg: 'shadow-lg',
+  primary: 'drop-shadow-xl bg-white dark:bg-zinc-800',
+  flat: 'bg-gray-200 dark:bg-zinc-700',
+  bordered: 'bg-white border',
 };
 
 const rounding = {
@@ -31,8 +19,6 @@ const rounding = {
 
 type OwnProps = {
   variant?: keyof typeof variants;
-  size?: keyof typeof sizes;
-  shadow?: keyof typeof shadows;
   rounded?: keyof typeof rounding;
   hover?: boolean;
 };
@@ -48,9 +34,8 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
     {
       variant = 'primary',
       size = 'md',
-      shadow = 'md',
       hover = false,
-      rounded = 'md',
+      rounded = 'lg',
       className,
       ...props
     }: CardProps<E>,
@@ -62,12 +47,10 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
         ref={ref}
         className={clsx(
           variants[variant],
-          sizes[size],
-          shadows[shadow],
           rounding[rounded],
-          className,
           props.onClick && 'cursor-pointer',
-          hover && 'transition ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-gray-700'
+          hover && 'transition ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
+          className
         )}
         {...props}
       />

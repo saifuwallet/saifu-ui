@@ -1,9 +1,9 @@
+import clsx from 'clsx';
 import React from 'react';
 import ListCard from './ListCard';
-import Text from './Elements/Text';
 
-const AssetList = ({ children }: { children: React.ReactNode }) => {
-  return <ListCard>{children}</ListCard>;
+const AssetList = ({ children, className }: { className?: string; children: React.ReactNode }) => {
+  return <ListCard className={className}>{children}</ListCard>;
 };
 
 export default AssetList;

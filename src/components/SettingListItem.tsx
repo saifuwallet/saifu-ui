@@ -35,11 +35,13 @@ const SettingListItem: <E extends React.ElementType = typeof defaultElement>(
   ) => {
     return (
       <Box
-        start={StartIcon && <StartIcon className="h-7 w-7 text-gray-400 mr-3 my-auto" />}
+        start={StartIcon && <StartIcon className="h-7 w-7 text-gray-400 mr-4 my-auto" />}
         as={defaultElement}
         ref={ref}
         aria-disabled={isDisabled}
         className={clsx('text-left w-full', isDisabled && 'cursor-not-allowed', className)}
+        hover
+        clickable
         {...props}
       >
         <Text as="p" weight="semibold">

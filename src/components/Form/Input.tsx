@@ -5,10 +5,9 @@ import Label from '@/components/Form/Label';
 import Text from '@/components/Elements/Text';
 
 const variants = {
-  primary: 'border-none rounded-lg shadow-sm',
+  primary: 'border-none bg-gray-100 text-black',
+  white: 'border-none bg-white',
   transparent: 'border-none bg-transparent',
-  gray: 'border-none bg-gray-50',
-  danger: 'bg-red-600 text-white hover:bg-red-50 hover:bg-red-700',
 };
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -23,11 +22,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       {label && <Label htmlFor={props.id || props.name}>{label}</Label>}
       <input
         ref={ref}
-        className={clsx('block w-full p-2.5 focus:ring-0', variants[variant], className)}
+        className={clsx(
+          'block w-full p-2.5 focus:ring-0 outline-none rounded-xl dark:text-white',
+          variants[variant],
+          className
+        )}
         {...props}
       />
       {errorText && (
-        <Text variant="danger" size="sm" className="px-2 py-1">
+        <Text as="p" variant="danger" size="sm" className="px-2">
           {errorText}
         </Text>
       )}

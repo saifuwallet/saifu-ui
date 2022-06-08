@@ -37,8 +37,10 @@ const ActivityListItem = ({
   return (
     <Box
       className={clsx(className)}
-      start={<CheckCircleIcon className="h-10 w-10 mr-2 text-gray-400 my-auto" />}
+      start={<CheckCircleIcon className="h-10 w-10 mr-4 text-gray-400 my-auto" />}
       onClick={onClick}
+      hover
+      clickable
     >
       <div className="flex leading-5">
         <div className="grow overflow-clip">

@@ -3,7 +3,7 @@ import React from 'react';
 import { CgSpinnerAlt } from 'react-icons/cg';
 
 const Spinner = ({ className }: { className?: string }) => {
-  return <CgSpinnerAlt className={clsx('animate-spin', className)} />;
+  return <CgSpinnerAlt className={clsx('animate-spin dark:text-zinc-600', className)} />;
 };
 
 export default Spinner;

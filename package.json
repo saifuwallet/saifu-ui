@@ -1,7 +1,7 @@
 {
   "name": "@saifuwallet/saifu-ui",
   "description": "React component library for saifu wallet.",
-  "version": "0.1.0-beta1",
+  "version": "0.1.0-beta2",
   "author": {
     "name": "Tengis Bat-Ulzii",
     "email": "tengis@saifuwallet.com",
@@ -90,6 +90,7 @@
     "lint-staged": "^12.4.1",
     "prettier": "2.6.2",
     "prettier-eslint": "^14.0.2",
+    "storybook-dark-mode": "^1.1.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.6",
     "vite-plugin-dts": "^1.1.1"

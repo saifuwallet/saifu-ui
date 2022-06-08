@@ -59,7 +59,6 @@ export default function TokenSelectorModal({
     <Modal title="Select Token" isOpen={isOpen} onClose={onClose}>
       <div className="space-y-2">
         <Input
-          variant="gray"
           type="text"
           placeholder="address or name"
           value={query}

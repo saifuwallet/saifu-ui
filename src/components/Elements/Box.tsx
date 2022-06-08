@@ -5,6 +5,8 @@ import { Box as PolymorphicBox, PolymorphicComponentProps } from 'react-polymorp
 
 export type OwnProps = {
   start?: React.ReactNode;
+  hover?: boolean;
+  clickable?: boolean;
 };
 
 export type BoxProps<E extends React.ElementType> = PolymorphicComponentProps<E, OwnProps>;
@@ -14,7 +16,7 @@ const Box: <E extends React.ElementType = typeof defaultElement>(
   props: BoxProps<E>
 ) => React.ReactElement | null = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
-    { start, className, children, ...props }: BoxProps<E>,
+    { start, hover, clickable, className, children, ...props }: BoxProps<E>,
     ref: typeof props.ref
   ) => {
     return (
@@ -22,7 +24,10 @@ const Box: <E extends React.ElementType = typeof defaultElement>(
         as={defaultElement}
         ref={ref}
         className={clsx(
-          'p-3 flex transition-all ease-in-out duration-200 hover:bg-gray-50 cursor-pointer',
+          'p-4 flex transition-all ease-in-out duration-200',
+          hover &&
+            'transition-all ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
+          clickable && 'cursor-pointer',
           className
         )}
         {...props}

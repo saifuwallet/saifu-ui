@@ -45,7 +45,7 @@ function Modal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block max-w-md container p-4 overflow-hidden align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-3">
+            <div className="inline-block max-w-md container p-4 overflow-hidden align-middle transition-all transform bg-white dark:bg-zinc-800 shadow-xl rounded-2xl space-y-3">
               <div className="flex justify-between text-left items-center px-2 align-baseline">
                 <Dialog.Title as={Text} size="lg" weight="medium">
                   {title}

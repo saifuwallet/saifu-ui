@@ -5,9 +5,9 @@ import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 export const variants = {
   primary: 'text-black dark:text-white',
-  secondary: 'text-gray-500',
-  'gray-500': 'text-gray-500',
-  'gray-400': 'text-gray-400',
+  secondary: 'text-gray-500 dark:text-zinc-400',
+  'gray-500': 'text-gray-500 dark:text-zinc-400',
+  'gray-400': 'text-gray-400 dark:text-zinc-500',
   inverse: 'text-white dark:text-black',
   inverseSecondary: 'text-orange-200',
   danger: 'text-red-500',

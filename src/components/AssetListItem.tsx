@@ -40,12 +40,11 @@ const AssetListItem = ({
   return (
     <Box
       start={
-        <TokenLogo size="sm" className="my-auto mr-3" url={info?.logoURI || metadata?.image} />
+        <TokenLogo size="sm" className="my-auto mr-4" url={info?.logoURI || metadata?.image} />
       }
-      className={clsx(
-        'p-3 flex transition-all ease-in-out duration-200 hover:bg-gray-50 cursor-pointer',
-        className
-      )}
+      className={clsx(className)}
+      hover
+      clickable
       onClick={onClick}
     >
       <div className="flex leading-5">

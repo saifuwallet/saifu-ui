@@ -22,6 +22,14 @@ Primary.args = {
   variant: 'primary',
 };
 
+export const Secondary = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Secondary.args = {
+  label: 'Button',
+  children: 'Primary',
+  variant: 'secondary',
+};
+
 export const PrimaryWithStartIcon = Template.bind({});
 PrimaryWithStartIcon.args = {
   label: 'Button',

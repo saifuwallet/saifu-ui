@@ -9,9 +9,11 @@ import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
   primary:
-    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-400 text-white drop-shadow-sm shadow-sm',
-  inverse: 'hover:text-orange-500 text-black',
-  ghost: 'hover:text-orange-500 text-black',
+    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white drop-shadow-sm shadow-sm',
+  secondary:
+    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white drop-shadow-sm shadow-sm',
+  inverse: 'hover:text-orange-500 text-black dark:text-white',
+  ghost: 'hover:text-orange-500 text-black dark:text-white',
   danger: `${colors.background.danger} text-white`,
 };
 
@@ -21,6 +23,14 @@ const sizes = {
   md: 'px-4 py-2 text-base',
   lg: 'px-5 py-3 text-base',
   xl: 'px-6 py-3.5 text-base',
+};
+
+const secondarySizes = {
+  xs: 'px-2.5 py-1.5 text-xs',
+  sm: 'px-2.5 py-1.5 text-sm',
+  md: 'px-3.5 py-1.5 text-base',
+  lg: 'px-4.5 py-2.5 text-base',
+  xl: 'px-5.5 py-3 text-base',
 };
 
 const spinnerSizes = {
@@ -67,22 +77,30 @@ const Button: <E extends React.ElementType = typeof defaultElement>(
         as={defaultElement}
         ref={ref}
         className={clsx(
-          'flex justify-center disabled:opacity-70 disabled:cursor-not-allowed rounded-lg focus:outline-none font-medium text-center',
+          'disabled:opacity-70 disabled:cursor-not-allowed rounded-lg focus:outline-none font-medium text-center',
           variants[variant],
-          sizes[size],
+          variant === 'secondary' ? 'p-0.5' : sizes[size],
           className
         )}
         {...props}
       >
-        <div className="my-auto">
-          {isLoading ? (
-            <Spinner className={clsx('mr-2', spinnerSizes[size])} />
-          ) : (
-            StartIcon && <StartIcon className="h-4 w-4 mr-2" />
+        <div
+          className={clsx(
+            'flex justify-center',
+            variant === 'secondary' && 'bg-white dark:bg-black text-orange-600 rounded-md',
+            variant === 'secondary' && secondarySizes[size]
           )}
+        >
+          <div className="my-auto">
+            {isLoading ? (
+              <Spinner className={clsx('mr-2', spinnerSizes[size])} />
+            ) : (
+              StartIcon && <StartIcon className="h-4 w-4 mr-2" />
+            )}
+          </div>
+          {children}
+          <div className="my-auto">{EndIcon && <EndIcon className="h-4 w-4 ml-2" />}</div>
         </div>
-        {children}
-        <div className="my-auto">{EndIcon && <EndIcon className="h-4 w-4 ml-2" />}</div>
       </Box>
     );
   }

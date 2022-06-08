@@ -9,6 +9,7 @@ const config: StorybookViteConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-postcss',
     '@storybook/addon-a11y',
+    'storybook-dark-mode',
   ],
   framework: '@storybook/react',
   core: { builder: '@storybook/builder-vite' },

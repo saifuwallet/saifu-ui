@@ -28,6 +28,7 @@ export const parameters = {
   },
   backgrounds: {
     default: 'light',
+    values: [{ name: 'black', value: '#000000' }],
   },
 };
 
@@ -50,7 +51,9 @@ export const decorators = [
 
     return (
       <SaifuUIProvider tokenMap={tokenMap} queryClient={queryClient}>
-        <Story />
+        <div>
+          <Story />
+        </div>
       </SaifuUIProvider>
     );
   },
