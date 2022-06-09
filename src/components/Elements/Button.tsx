@@ -8,10 +8,8 @@ import Spinner from '@/components/Elements/Spinner';
 import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
-  primary:
-    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white drop-shadow-sm shadow-sm',
-  secondary:
-    'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white drop-shadow-sm shadow-sm',
+  primary: 'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white',
+  secondary: 'hover:bg-gradient-to-bl bg-gradient-to-br from-pink-500 to-orange-500 text-white',
   inverse: 'hover:text-orange-500 text-black dark:text-white',
   ghost: 'hover:text-orange-500 text-black dark:text-white',
   danger: `${colors.background.danger} text-white`,

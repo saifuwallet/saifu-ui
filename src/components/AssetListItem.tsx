@@ -42,7 +42,7 @@ const AssetListItem = ({
       start={
         <TokenLogo size="sm" className="my-auto mr-4" url={info?.logoURI || metadata?.image} />
       }
-      className={clsx(className)}
+      className={clsx(className, 'bg-white bg-origin-content')}
       hover
       clickable
       onClick={onClick}

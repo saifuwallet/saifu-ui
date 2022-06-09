@@ -49,7 +49,8 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
           variants[variant],
           rounding[rounded],
           props.onClick && 'cursor-pointer',
-          hover && 'transition ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
+          hover &&
+            'transition transform-gpu ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
           className
         )}
         {...props}

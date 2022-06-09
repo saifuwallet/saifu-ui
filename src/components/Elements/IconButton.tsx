@@ -70,7 +70,7 @@ const IconButton: <E extends React.ElementType = typeof defaultElement>(
         as={defaultElement}
         ref={ref}
         className={clsx(
-          'inline-block transition ease-in-out outline-none',
+          'inline-block transition transform-gpu ease-in-out outline-none',
           variants[variant],
           sizes[size],
           roundings[rounded],

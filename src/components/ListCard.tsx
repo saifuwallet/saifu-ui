@@ -12,9 +12,8 @@ const ListCard = ({
   header?: JSX.Element;
 }) => {
   return (
-    <Card className={clsx('overflow-clip', className)}>
-      {header && <div className="hidden lg:block">{header}</div>}
-      <div className="divide-y dark:divide-zinc-700">{children}</div>
+    <Card className={clsx('divide-y dark:divide-zinc-700', className)}>
+      <div className="overflow-hidden rounded-lg">{children}</div>
     </Card>
   );
 };
