@@ -42,22 +42,19 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
     ref: typeof props.ref
   ) => {
     return (
-      <div className={clsx(variants[variant], rounding[rounded])}>
-        <Box
-          as={defaultElement}
-          ref={ref}
-          className={clsx(
-            'overflow-hidden',
-            variants[variant],
-            rounding[rounded],
-            props.onClick && 'cursor-pointer',
-            hover &&
-              'transition transform-gpu ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700 overflow-hidden',
-            className
-          )}
-          {...props}
-        />
-      </div>
+      <Box
+        as={defaultElement}
+        ref={ref}
+        className={clsx(
+          variants[variant],
+          rounding[rounded],
+          props.onClick && 'cursor-pointer',
+          hover &&
+            'transition transform-gpu ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
+          className
+        )}
+        {...props}
+      />
     );
   }
 );

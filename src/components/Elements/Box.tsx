@@ -26,7 +26,7 @@ const Box: <E extends React.ElementType = typeof defaultElement>(
         className={clsx(
           'p-4 flex',
           hover &&
-            'transition transform-gpu ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700',
+            'transition transform-gpu ease-in-out duration-200 hover:bg-gray-50 dark:hover:bg-zinc-700 hover:rounded-lg',
           clickable && 'cursor-pointer',
           className
         )}
