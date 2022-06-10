@@ -1,6 +1,7 @@
 export { default as Button } from '@/components/Elements/Button';
 export { default as Card } from '@/components/Elements/Card';
 export { default as IconButton } from '@/components/Elements/IconButton';
+export { default as Box } from '@/components/Elements/Box';
 export { default as Input } from '@/components/Form/Input';
 export { default as Label } from '@/components/Form/Label';
 export { default as ListItem } from '@/components/ListItem';
