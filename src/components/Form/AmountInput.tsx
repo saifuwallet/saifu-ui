@@ -70,9 +70,19 @@ export default function AmountInput({
           />
         </div>
         <div className="flex-none self-center">
-          <Button className="group" variant="inverse" size="md" type="button" onClick={onClick}>
+          <Button
+            className={clsx('group', !onClick && 'cursor-default')}
+            variant="inverse"
+            size="md"
+            type="button"
+            onClick={onClick}
+          >
             <TokenLogo className="mr-2 self-center" size="xs" url={logoURI} />
-            <Text size="lg" weight="medium" className="group-hover:text-orange-500">
+            <Text
+              size="lg"
+              weight="medium"
+              className={clsx(onClick && 'group-hover:text-orange-500')}
+            >
               {symbol}
             </Text>
           </Button>
