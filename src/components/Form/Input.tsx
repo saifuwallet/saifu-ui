@@ -5,8 +5,8 @@ import Label from '@/components/Form/Label';
 import Text from '@/components/Elements/Text';
 
 const variants = {
-  primary: 'border-none bg-gray-100 text-black',
-  white: 'border-none bg-white',
+  primary: 'border-none bg-gray-100 dark:bg-zinc-700 text-black dark:text-white',
+  white: 'border-none bg-white dark:text-white',
   transparent: 'border-none bg-transparent',
 };
 
@@ -23,7 +23,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         className={clsx(
-          'block w-full p-2.5 focus:ring-0 outline-none rounded-xl dark:text-white',
+          'block w-full p-2.5 focus:ring-0 outline-none rounded-xl',
           variants[variant],
           className
         )}

@@ -4,6 +4,8 @@ import { TokenListProvider, TokenInfo } from '@solana/spl-token-registry';
 import { QueryClient } from 'react-query';
 import { useEffect, useState } from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { useDarkMode } from 'storybook-dark-mode';
+import clsx from 'clsx';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -34,6 +36,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => {
+    const darkMode = useDarkMode();
     const [tokenMap, setTokenMap] = useState<Map<string, TokenInfo>>(new Map());
     const queryClient = new QueryClient();
     useEffect(() => {
@@ -51,7 +54,7 @@ export const decorators = [
 
     return (
       <SaifuUIProvider tokenMap={tokenMap} queryClient={queryClient}>
-        <div>
+        <div className={clsx(darkMode && 'dark')}>
           <Story />
         </div>
       </SaifuUIProvider>

@@ -5,8 +5,8 @@ import Text from '@/components/Elements/Text';
 import Label from '@/components/Form/Label';
 
 const variants = {
-  primary: 'border-none bg-gray-100 text-black',
-  white: 'border-none bg-white',
+  primary: 'border-none bg-gray-100 dark:bg-zinc-700 text-black dark:text-white',
+  white: 'border-none bg-white dark:text-white',
   transparent: 'border-none bg-transparent',
 };
 

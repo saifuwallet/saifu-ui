@@ -44,7 +44,7 @@ export default function AmountInput({
   );
 
   return (
-    <Card variant="flat" className={clsx('p-2 rounded-md bg-gray-100', className)}>
+    <Card variant="flat" className={clsx('p-2', className)}>
       <div className="flex">
         <div className="flex-grow w-32">
           <Input
@@ -63,7 +63,7 @@ export default function AmountInput({
               setAmount(e.target.value)
             }
             className={clsx(
-              'form-input text-lg font-medium text-ellipsis',
+              'form-input text-lg font-medium text-ellipsis dark:text-white',
               amountIsLoading && 'animate-pulse'
             )}
             disabled={!setAmount}

@@ -9,7 +9,8 @@ const variants = {
   secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-600',
   ghost: 'text-gray-600 hover:text-orange-500 bg-transparent',
   white: 'text-white dark:text-orange-200',
-  outline: 'bg-white text-gray-400 border hover:text-orange-500 rounded-full',
+  outline:
+    'bg-white dark:bg-zinc-800 text-gray-400 border dark:border-zinc-600 hover:text-orange-500 rounded-full',
   danger: 'text-red-500 hover:text-red-600 rounded-full',
 };
 

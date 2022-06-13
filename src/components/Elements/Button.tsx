@@ -91,7 +91,7 @@ const Button: <E extends React.ElementType = typeof defaultElement>(
         >
           <div className="my-auto">
             {isLoading ? (
-              <Spinner className={clsx('mr-2', spinnerSizes[size])} />
+              <Spinner className={clsx('mr-2 dark:text-white', spinnerSizes[size])} />
             ) : (
               StartIcon && <StartIcon className="h-4 w-4 mr-2" />
             )}

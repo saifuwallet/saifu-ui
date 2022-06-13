@@ -5,8 +5,8 @@ import { Box, PolymorphicComponentProps } from 'react-polymorphic-box';
 
 const variants = {
   primary: 'drop-shadow-xl bg-white dark:bg-zinc-800',
-  flat: 'bg-gray-200 dark:bg-zinc-700',
-  bordered: 'bg-white border',
+  flat: 'bg-gray-100 dark:bg-zinc-700',
+  bordered: 'bg-white dark:bg-zinc-800 border dark:border-zinc-600',
 };
 
 const rounding = {
