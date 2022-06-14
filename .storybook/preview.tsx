@@ -5,7 +5,6 @@ import { QueryClient } from 'react-query';
 import { useEffect, useState } from 'react';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { useDarkMode } from 'storybook-dark-mode';
-import clsx from 'clsx';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -39,6 +38,14 @@ export const decorators = [
     const darkMode = useDarkMode();
     const [tokenMap, setTokenMap] = useState<Map<string, TokenInfo>>(new Map());
     const queryClient = new QueryClient();
+
+    useEffect(() => {
+      if (darkMode) {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    }, [darkMode]);
     useEffect(() => {
       new TokenListProvider().resolve().then((tokens) => {
         const tokenList = tokens.filterByClusterSlug('mainnet-beta').getList();
@@ -54,9 +61,7 @@ export const decorators = [
 
     return (
       <SaifuUIProvider tokenMap={tokenMap} queryClient={queryClient}>
-        <div className={clsx(darkMode && 'dark')}>
-          <Story />
-        </div>
+        <Story />
       </SaifuUIProvider>
     );
   },

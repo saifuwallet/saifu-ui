@@ -4,7 +4,7 @@ import { lamportsToSol } from '@/lib/number';
 import { short } from '@/lib/publicKey';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import Text from '@/components/Elements/Text';
 import Box from './Elements/Box';
 import Tag from '@/components/Elements/Tag';

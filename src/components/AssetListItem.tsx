@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import TokenAccount from '@/types/TokenAccount';
 
 import usePrice from '@/hooks/usePrice';

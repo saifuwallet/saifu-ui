@@ -46,6 +46,7 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
         as={defaultElement}
         ref={ref}
         className={clsx(
+          'dark:text-white',
           variants[variant],
           rounding[rounded],
           props.onClick && 'cursor-pointer',

@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Card>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const Template: ComponentStory<typeof Card> = (args) => <Card {...args} className="p-4" />;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

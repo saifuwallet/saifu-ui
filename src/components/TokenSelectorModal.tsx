@@ -6,10 +6,14 @@ import { FixedSizeList as List } from 'react-window';
 
 import usePrices from '../hooks/usePrices';
 import useTokenMap from '../hooks/useTokenMap';
-import { TokenAccount } from '../types';
+import { TokenAccount, TokenMetadata } from '../types';
 import Modal from './Elements/Modal';
-import TokenListItem from './TokenListItem';
-import AssetListItem from './AssetListItem';
+import usePrice from '@/hooks/usePrice';
+import { lamportsToSol, displayUSD } from '@/lib/number';
+import { short } from '@/lib/publicKey';
+import TokenLogo from './TokenLogo';
+import Text from './Elements/Text';
+import Box from './Elements/Box';
 
 export default function TokenSelectorModal({
   onSelect,
@@ -69,7 +73,7 @@ export default function TokenSelectorModal({
             className="scrollbar-hide"
             itemCount={filteredTokens.length}
             height={208}
-            itemSize={58}
+            itemSize={60}
             width="100%"
           >
             {({ index, style }) => (
@@ -87,6 +91,51 @@ export default function TokenSelectorModal({
     </Modal>
   );
 }
+
+type TokenListItemProps = {
+  onClick?: () => void;
+  mint: string;
+  tokenAccount?: TokenAccount;
+  metadata?: TokenMetadata;
+  style?: React.CSSProperties;
+};
+
+const TokenListItem = ({ onClick, mint, style, tokenAccount, metadata }: TokenListItemProps) => {
+  const tokenMap = useTokenMap();
+  const tokenInfo = tokenMap.get(mint);
+  const price = usePrice(tokenInfo);
+  const tokenBalance = useMemo(
+    () => lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals),
+    [tokenAccount]
+  );
+  const tokenBalanceUSD = useMemo(
+    () => displayUSD(price.data && tokenBalance * price.data),
+    [tokenBalance, price]
+  );
+
+  return (
+    <Box
+      start={
+        <TokenLogo size="sm" url={tokenInfo?.logoURI || metadata?.image} className="my-auto mr-3" />
+      }
+      onClick={onClick}
+      style={style}
+      className="!p-2"
+    >
+      <div className="flex leading-5">
+        <div className="grow">
+          <Text weight="semibold">{tokenInfo?.symbol || metadata?.name || short(mint)}</Text>
+        </div>
+        <div className="grow text-right">
+          <Text>{tokenBalanceUSD}</Text>
+        </div>
+      </div>
+      <div>
+        <Text>{`${lamportsToSol(Number(tokenAccount?.amount), tokenAccount?.decimals)}`}</Text>
+      </div>
+    </Box>
+  );
+};
 
 export const filterByQuery = (q: string, tokenMap: Map<string, TokenInfo>) => {
   return (mint: string) => {

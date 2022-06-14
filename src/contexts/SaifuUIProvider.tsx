@@ -1,5 +1,5 @@
 import { TokenInfo } from '@solana/spl-token-registry';
-import React, { useContext } from 'react';
+import React from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
 interface SaifuUIProviderContextInterface {
