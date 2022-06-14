@@ -119,6 +119,8 @@ const TokenListItem = ({ onClick, mint, style, tokenAccount, metadata }: TokenLi
         <TokenLogo size="sm" url={tokenInfo?.logoURI || metadata?.image} className="my-auto mr-3" />
       }
       onClick={onClick}
+      hover
+      clickable
       style={style}
       className="!p-2"
     >
