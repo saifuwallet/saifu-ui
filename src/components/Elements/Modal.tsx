@@ -16,20 +16,21 @@ function Modal({
   onClose: () => void;
   children: React.ReactNode;
 }) {
+  console.log('MODAL IS OPEN:::::', isOpen);
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={onClose}>
         <div className="min-h-screen px-4 text-center">
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="ease-out duration-200"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-50 transition-opacity" />
+            <div className="fixed inset-0 bg-black bg-opacity-50" aria-hidden="true" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -38,14 +39,14 @@ function Modal({
           </span>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
+            enter="transition transform ease-out duration-200"
+            enterFrom="transition transform opacity-0 scale-95"
+            enterTo="transition transform opacity-100 scale-100"
+            leave="transition transform ease-in duration-200"
+            leaveFrom="transition transform opacity-100 scale-100"
+            leaveTo="transition transform opacity-0 scale-95"
           >
-            <div className="inline-block max-w-md container p-4 overflow-hidden align-middle transition transform-gpu transform bg-white dark:bg-zinc-800 shadow-xl rounded-2xl space-y-3">
+            <Dialog.Panel className="inline-block max-w-md container p-4 overflow-hidden align-middle bg-white dark:bg-zinc-800 shadow-xl rounded-2xl space-y-3">
               <div className="flex justify-between text-left items-center px-2 align-baseline">
                 <Dialog.Title as={Text} size="lg" weight="medium">
                   {title}
@@ -59,7 +60,7 @@ function Modal({
                 />
               </div>
               <div className="!text-left">{children}</div>
-            </div>
+            </Dialog.Panel>
           </Transition.Child>
         </div>
       </Dialog>

@@ -72,7 +72,7 @@ export default function TokenSelectorModal({
           <List
             className="scrollbar-hide"
             itemCount={filteredTokens.length}
-            height={208}
+            height={300}
             itemSize={60}
             width="100%"
           >
@@ -82,7 +82,10 @@ export default function TokenSelectorModal({
                 key={index}
                 mint={filteredTokens[index]}
                 tokenAccount={getTokenAcc(filteredTokens[index])}
-                onClick={() => onSelect(filteredTokens[index])}
+                onClick={() => {
+                  onSelect(filteredTokens[index]);
+                  onClose();
+                }}
               />
             )}
           </List>

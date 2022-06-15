@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import TokenSelectorModal from './TokenSelectorModal';
@@ -12,10 +12,10 @@ export default {
 } as ComponentMeta<typeof TokenSelectorModal>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof TokenSelectorModal> = (args) => (
-  <TokenSelectorModal {...args} />
-);
-
+const Template: ComponentStory<typeof TokenSelectorModal> = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  return <TokenSelectorModal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />;
+};
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
