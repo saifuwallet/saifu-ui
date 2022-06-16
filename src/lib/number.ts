@@ -35,3 +35,5 @@ export const displayAmount = (amount: number, decimals: number) =>
   numeral(lamportsToSol(amount, decimals)).format('0,0.00');
 
 export const displayPercentage = (p?: number) => numeral(p).format('0.00%');
+
+export const displayBPS = (bps?: number) => displayPercentage(bps ? 0.0001 * bps : undefined);

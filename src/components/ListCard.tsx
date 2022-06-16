@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React from 'react';
 import Card from './Elements/Card';
 
@@ -12,7 +11,7 @@ const ListCard = ({
   header?: JSX.Element;
 }) => {
   return (
-    <Card className={clsx('divide-y dark:divide-zinc-700 ', className)}>
+    <Card className={className}>
       <div className="rounded-lg overflow-hidden">{children}</div>
     </Card>
   );
