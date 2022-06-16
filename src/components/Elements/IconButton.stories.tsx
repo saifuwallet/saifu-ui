@@ -15,6 +15,27 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />;
 
+export const Variants = () => (
+  <div className="space-x-1">
+    <IconButton icon={SearchIcon} />
+    <IconButton icon={SearchIcon} variant="secondary" />
+    <IconButton icon={SearchIcon} variant="ghost" />
+    <IconButton icon={SearchIcon} variant="danger" />
+  </div>
+);
+
+export const Sizes = () => (
+  <div className="space-x-1">
+    <IconButton icon={SearchIcon} size="xs" />
+    <IconButton icon={SearchIcon} size="sm" />
+    <IconButton icon={SearchIcon} size="md" />
+    <IconButton icon={SearchIcon} size="lg" />
+    <IconButton icon={SearchIcon} size="xl" />
+    <IconButton icon={SearchIcon} size="2xl" />
+    <IconButton icon={SearchIcon} size="3xl" />
+  </div>
+);
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
@@ -37,59 +58,6 @@ Ghost.args = {
   label: 'IconButton',
   icon: StarIcon,
   variant: 'ghost',
-};
-
-export const Large = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Large.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: 'lg',
-  variant: 'primary',
-};
-
-export const XL = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-XL.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: 'xl',
-  variant: 'primary',
-};
-
-export const twoXL = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-twoXL.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: '2xl',
-  variant: 'primary',
-};
-
-export const threeXL = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-threeXL.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: '3xl',
-  variant: 'primary',
-};
-export const Small = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Small.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: 'sm',
-  variant: 'primary',
-};
-
-export const ExtraSmall = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-ExtraSmall.args = {
-  label: 'IconButton',
-  icon: StarIcon,
-  size: 'xs',
-  variant: 'primary',
 };
 
 export const Rounded = Template.bind({});

@@ -12,6 +12,22 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} className="p-4" />;
 
+export const All = () => {
+  return (
+    <div className="space-y-2">
+      <Card className="p-4" variant="primary">
+        Primary
+      </Card>
+      <Card className="p-4" variant="flat">
+        Flat
+      </Card>
+      <Card className="p-4" variant="bordered">
+        Bordered
+      </Card>
+    </div>
+  );
+};
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
