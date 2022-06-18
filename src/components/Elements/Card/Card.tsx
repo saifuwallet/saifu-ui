@@ -31,14 +31,7 @@ const Card: <E extends React.ElementType = typeof defaultElement>(
   props: CardProps<E>
 ) => React.ReactElement | null = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
-    {
-      variant = 'primary',
-      size = 'md',
-      hover = false,
-      rounded = 'lg',
-      className,
-      ...props
-    }: CardProps<E>,
+    { variant = 'primary', hover = false, rounded = 'lg', className, ...props }: CardProps<E>,
     ref: typeof props.ref
   ) => {
     return (

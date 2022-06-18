@@ -1,12 +1,6 @@
 import React, { useMemo } from 'react';
 
-import {
-  displayAmount,
-  displayBPS,
-  displayPercentage,
-  displayUSD,
-  lamportsToSol,
-} from '@/lib/number';
+import { displayAmount, displayBPS, displayUSD, lamportsToSol } from '@/lib/number';
 
 import TokenLogo from './TokenLogo';
 import Text from './Elements/Text';
