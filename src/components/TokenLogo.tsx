@@ -35,6 +35,7 @@ function TokenLogo({
   return (
     <div
       className={clsx(
+        'overflow-hidden',
         sizes[size],
         shapes[shape],
         (isLoading || (url && !imgLoaded)) && 'animate-pulse bg-gray-300',
