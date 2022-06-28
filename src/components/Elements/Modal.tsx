@@ -16,7 +16,6 @@ function Modal({
   onClose: () => void;
   children: React.ReactNode;
 }) {
-  console.log('MODAL IS OPEN:::::', isOpen);
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={onClose}>
